@@ -34,6 +34,7 @@ This action authenticates with your eks cluster and deploys helm chart located a
 
 ## Example usage
 
+```
 uses: mobiliza/helm-deploy-to-eks
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -43,3 +44,4 @@ env:
   VERSION: ${{ github.sha }}
   ENVIRONMENT: production
   PROJECT: foobar
+```
