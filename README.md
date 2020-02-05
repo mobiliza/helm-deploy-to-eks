@@ -1,30 +1,8 @@
-# Hello world docker action
+# HELM Deploy to EKS Docker Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
-This action authenticates with your eks cluster and deploys
-
-## Inputs
-
-### `none`
-
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `none`
-
-The time we greeted you.
+This action authenticates with your eks cluster and deploys helm chart located at `./chart`.
 
 ## Env
-
-env:
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    CLUSTER_REGION: sa-east-1
-    CLUSTER_NAME: eks-joker
-    VERSION: ${{ github.sha }}
-    ENVIRONMENT: stage
-    PROJECT: tracking
 
 ### `AWS_ACCESS_KEY_ID`
 
@@ -58,10 +36,10 @@ env:
 
 uses: mobiliza/helm-deploy-to-eks
 env:
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    CLUSTER_REGION: sa-east-1
-    CLUSTER_NAME: eks-foobar
-    VERSION: ${{ github.sha }}
-    ENVIRONMENT: production
-    PROJECT: foobar
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  CLUSTER_REGION: sa-east-1
+  CLUSTER_NAME: eks-foobar
+  VERSION: ${{ github.sha }}
+  ENVIRONMENT: production
+  PROJECT: foobar
