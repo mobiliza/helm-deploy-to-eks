@@ -1,0 +1,6 @@
+# action.yml
+name: 'Helm Deploy to EKS'
+description: 'Upgrades helm chart on eks'
+runs:
+  using: docker
+  image: Dockerfile
