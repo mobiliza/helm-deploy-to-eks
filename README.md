@@ -35,7 +35,7 @@ This action authenticates with your eks cluster and deploys helm chart located a
 ## Example usage
 
 ```
-uses: mobiliza/helm-deploy-to-eks
+uses: mobiliza/helm-deploy-to-eks@v1
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
