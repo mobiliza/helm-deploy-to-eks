@@ -28,11 +28,11 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-  env:
-    AWS_ACCESS_KEY_ID: ${{ inputs.eks-cluster-accesskey }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.eks-cluster-secretkey }}
-    CLUSTER_REGION: ${{ inputs.eks-cluster-region }}
-    CLUSTER_NAME: ${{ inputs.eks-cluster-name }}
-    ENVIRONMENT: ${{ inputs.namespace }}
-    PROJECT: ${{ inputs.helm-release }}
-    SET_VALUES: ${{ inputs.set-values }}
+  args:
+    - ${{ inputs.eks-cluster-accesskey }}
+    - ${{ secrets.eks-cluster-secretkey }}
+    - ${{ inputs.eks-cluster-region }}
+    - ${{ inputs.eks-cluster-name }}
+    - ${{ inputs.namespace }}
+    - ${{ inputs.helm-release }}
+    - ${{ inputs.set-values }}
