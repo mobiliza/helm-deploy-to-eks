@@ -1,9 +1,9 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 echo "Will deploy to EKS"
 
 export KUBECONFIG=/root/.kube/config
-aws eks --region $CLUSTER_REGION update-kubeconfig --name $CLUSTER_NAME
+aws eks --region $INPUT_EKS-CLUSTER-REGION  update-kubeconfig --name $INPUT_EKS-CLUSTER-NAME 
 
 echo "Deploying version to $ENVIRONMENT environment with:"
 
