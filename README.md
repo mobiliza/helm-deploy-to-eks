@@ -2,46 +2,47 @@
 
 This action authenticates with your eks cluster and deploys helm chart located at `./chart`.
 
-## Env
+## Inputs
 
-### `AWS_ACCESS_KEY_ID`
+### `eks-cluster-name`
 
-**Required** It is what it says. Recommend to use Github Secrets.
+**Required** The Name of EKS Cluster. Can be viewed running `$ eksctl get cluster`.
 
-### `AWS_SECRET_ACCESS_KEY`
+### `eks-cluster-region`
 
-**Required** It is what it says. Recommend to use Github Secrets.
+**Required** The AWS Region of EKS Cluster. Can be viewed running `$ eksctl get cluster`.
 
-### `CLUSTER_REGION`
+### `eks-cluster-accesskey`
 
-**Required** The AWS region where your EKS kubernetes cluster is located.
+**Required** An AWS ACCESS KEY with enough permissions to `$ kubectl apply` successfully.
 
-### `CLUSTER_NAME`
+### `eks-cluster-secretkey`
 
-**Required** Your cluster EKS name.
+**Required** An AWS SECRET KEY with enough permissions to `$ kubectl apply` successfully.
 
-### `VERSION`
+### `helm-release`
 
-**Required** Tag used on your configurated deployment.yaml image. Default `"latest"`.
+**Required** The helm release name.
 
-### `ENVIRONMENT`
+### `namespace`
 
-**Required** Kubernetes namespace to install your Helm chart. Default `"default"`.
+**Required** Kubernetes namespace to install/upgrade your Helm chart. Default `"default"`.
 
-### `PROJECT`
+### `set-values`
 
-**Required** Helm installation name.
+**Required** Values to be `--set` during `helm upgrade` command. 
 
 ## Example usage
 
 ```
 uses: mobiliza/helm-deploy-to-eks@v1
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  CLUSTER_REGION: sa-east-1
-  CLUSTER_NAME: eks-foobar
-  VERSION: ${{ github.sha }}
-  ENVIRONMENT: production
-  PROJECT: foobar
+with:
+  eks-cluster-accesskey: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  eks-cluster-secretkey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  eks-cluster-region: sa-east-1
+  eks-cluster-name: eks-foobar
+  helm-release: foobar
+  namespace: production
+  set-values: |
+    version=${{ github.sha }}
 ```
