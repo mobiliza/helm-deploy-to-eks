@@ -1,6 +1,38 @@
 # action.yml
-name: 'Helm Deploy to EKS'
-description: 'Upgrades helm chart on eks'
+name: "Helm Deploy to EKS"
+description: "Upgrades helm chart on eks"
+inputs:
+  eks-cluster-name:
+    description: "AWS EKS cluster name"
+    required: true
+    default: "my-eks-cluster-name"
+  eks-cluster-region:
+    description: "AWS region of the cluster"
+    required: true
+  eks-cluster-accesskey:
+    description: "AWS_ACCESS_KEY with EKS permissions"
+    required: true
+  eks-cluster-secretkey:
+    description: "AWS_SECRET_KEY with EKS permissions"
+    required: true
+  helm-release:
+    description: "Helm release name"
+    required: true
+  namespace:
+    description: "Kubernetes namespace of installed release"
+    required: true
+    default: "default"
+  set-values:
+    description: "Helm chart values to override"
+    required: true
 runs:
   using: docker
   image: Dockerfile
+  env:
+    AWS_ACCESS_KEY_ID: ${{ inputs.eks-cluster-accesskey }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.eks-cluster-secretkey }}
+    CLUSTER_REGION: ${{ inputs.eks-cluster-region }}
+    CLUSTER_NAME: ${{ inputs.eks-cluster-name }}
+    ENVIRONMENT: ${{ inputs.namespace }}
+    PROJECT: ${{ inputs.helm-release }}
+    SET_VALUES: ${{ inputs.set-values }}
