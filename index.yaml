@@ -30,7 +30,7 @@ runs:
   image: Dockerfile
   args:
     - ${{ inputs.eks-cluster-accesskey }}
-    - ${{ secrets.eks-cluster-secretkey }}
+    - ${{ inputs.eks-cluster-secretkey }}
     - ${{ inputs.eks-cluster-region }}
     - ${{ inputs.eks-cluster-name }}
     - ${{ inputs.namespace }}
