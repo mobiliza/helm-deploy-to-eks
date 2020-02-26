@@ -8,16 +8,10 @@
 # $6: inputs.helm_release
 # $7: inputs.set_values
 
-echo "Checking ENV"
+echo "Connects to EKS"
 
-printenv
-
-echo "Coonects to EKS"
-
-export AWS_ACCESS_KEY_ID=$INPUT_EKS_CLUSTER_ACCESSKEY
-export AWS_SECRET_ACCESS_KEY=$INPUT_EKS_CLUSTER_ACCESSKEY
 export KUBECONFIG=/root/.kube/config
-aws eks --region $INPUT_CLUSTER_REGION update-kubeconfig --name $INPUT_CLUSTER_NAME
+aws eks --region $CLUSTER_REGION update-kubeconfig --name $CLUSTER_NAME
 
 echo "Deploying version to $INPUT_NAMESPACE environment with:"
 

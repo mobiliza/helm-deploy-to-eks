@@ -32,6 +32,16 @@ This action authenticates with your eks cluster and deploys helm chart located a
 
 **Required** Values to be `--set` during `helm upgrade` command. 
 
+## Env
+
+### AWS_ACCESS_KEY_ID
+
+### AWS_SECRET_ACCESS_KEY
+
+### CLUSTER_REGION
+
+### CLUSTER_NAME
+
 ## Example usage
 
 ```

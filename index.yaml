@@ -2,19 +2,6 @@
 name: "Helm Deploy to EKS"
 description: "Upgrades helm chart on eks"
 inputs:
-  eks_cluster_name:
-    description: "AWS EKS cluster name"
-    required: true
-    default: "my_eks_cluster_name"
-  eks_cluster_region:
-    description: "AWS region of the cluster"
-    required: true
-  eks_cluster_accesskey:
-    description: "AWS_ACCESS_KEY with EKS permissions"
-    required: true
-  eks_cluster_secretkey:
-    description: "AWS_SECRET_KEY with EKS permissions"
-    required: true
   helm_release:
     description: "Helm release name"
     required: true
@@ -28,11 +15,3 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-  args:
-    - ${{ inputs.eks_cluster_accesskey }}
-    - ${{ inputs.eks_cluster_secretkey }}
-    - ${{ inputs.eks_cluster_region }}
-    - ${{ inputs.eks_cluster_name }}
-    - ${{ inputs.namespace }}
-    - ${{ inputs.helm_release }}
-    - ${{ inputs.set_values }}
