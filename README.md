@@ -4,22 +4,6 @@ This action authenticates with your eks cluster and deploys helm chart located a
 
 ## Inputs
 
-### `eks-cluster-name`
-
-**Required** The Name of EKS Cluster. Can be viewed running `$ eksctl get cluster`.
-
-### `eks-cluster-region`
-
-**Required** The AWS Region of EKS Cluster. Can be viewed running `$ eksctl get cluster`.
-
-### `eks-cluster-accesskey`
-
-**Required** An AWS ACCESS KEY with enough permissions to `$ kubectl apply` successfully.
-
-### `eks-cluster-secretkey`
-
-**Required** An AWS SECRET KEY with enough permissions to `$ kubectl apply` successfully.
-
 ### `helm-release`
 
 **Required** The helm release name.
