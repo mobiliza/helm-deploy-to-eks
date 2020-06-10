@@ -7,7 +7,7 @@ aws eks --region $CLUSTER_REGION update-kubeconfig --name $CLUSTER_NAME
 
 echo "Fetch current helm values.yaml"
 
-helm -n $INPUT_NAMESPACE get values $INPUT_HELM_RELEASE > previousValues.yaml
+helm -n $INPUT_NAMESPACE get values $INPUT_HELM_RELEASE --all > previousValues.yaml
 
 echo "Previous Values feched"
 
